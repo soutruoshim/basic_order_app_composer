@@ -8,23 +8,20 @@ import androidx.lifecycle.ViewModel
 class OrderViewModel: ViewModel() {
 
     // Ui state
-    var name by mutableStateOf("")
-    private set
-    var phone by mutableStateOf("")
-    private set
 
+    var formUiState by mutableStateOf(FormUiState())
 
     //Ui event
     fun onNameChange():(String)->Unit = {
-        name = it
+       formUiState = formUiState.copy(name = it)
     }
 
     fun onPhoneChange():(String)->Unit = {
-        phone = it
+        formUiState = formUiState.copy(phone = it)
     }
 
     fun payOrder():()->Unit = {
-       println("Order by $name, and phone $phone")
+       println("Order by ${formUiState.name}, and phone ${formUiState.phone}")
     }
 
 }
