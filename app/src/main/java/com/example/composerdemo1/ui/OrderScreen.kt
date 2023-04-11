@@ -17,10 +17,10 @@ fun OrderScreen(viewModel: OrderViewModel = viewModel()){
 
     ContactInformation(
         name=viewModel.formUiState.name,
-        onNameChange=viewModel.onNameChange(),
+        onNameChange={viewModel.onFormEvent(FormUiEvent.OnNameChange(it))},
         phone=viewModel.formUiState.phone,
-        onPhoneChange=viewModel.onPhoneChange(),
-        payOrder = viewModel.payOrder(),
+        onPhoneChange={ viewModel.onFormEvent(FormUiEvent.OnPhoneChange(it)) },
+        payOrder = { viewModel.onFormEvent(FormUiEvent.PayOrderClicked) },
         isValidPayOrder = viewModel.formUiState.successValidated
     )
 }
