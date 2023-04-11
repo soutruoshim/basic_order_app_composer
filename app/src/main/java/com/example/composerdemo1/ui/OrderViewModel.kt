@@ -20,7 +20,7 @@ class OrderViewModel: ViewModel() {
     }
 
     fun onPhoneChange():(String)->Unit = {
-        name = it
+        phone = it
     }
 
     fun payOrder():()->Unit = {
